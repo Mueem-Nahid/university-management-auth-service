@@ -11,8 +11,8 @@ app.use(cors());
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
-app.use('/api/v1/book', () => {
-   console.log("hello");
+app.use('/', (req: Request, res: Response) => {
+   res.send("Hey...")
 })
 
 export default app
