@@ -3,9 +3,9 @@ import { IGenericErrorMessage } from '../interfaces/error'
 import { IGenericErrorResponse } from '../interfaces/common'
 
 const handleValidationError = (
-  err: mongoose.Error.ValidatorError
+  error: mongoose.Error.ValidatorError
 ): IGenericErrorResponse => {
-  const errors: IGenericErrorMessage[] = Object.values(err.errors).map(
+  const errors: IGenericErrorMessage[] = Object.values(error.errors).map(
     (el): IGenericErrorMessage => {
       return {
         path: el?.path,

@@ -24,7 +24,7 @@ const findLastUserId = async () => {
   return lastUser?.id
 }
 
-export default {
+export const UserService = {
   createUserIntoDb,
   findLastUserId,
 }

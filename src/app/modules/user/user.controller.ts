@@ -1,12 +1,12 @@
-import { NextFunction, Request, Response } from 'express'
-import userService from './user.service'
+import { RequestHandler } from 'express'
 import { sendResponse } from '../../utils/utils'
 import { IUser } from './user.interface'
+import { UserService } from './user.service'
 
-const createUser = async (req: Request, res: Response, next: NextFunction) => {
+const createUser: RequestHandler = async (req, res, next) => {
   try {
     const { user } = req.body
-    const result: IUser | null = await userService.createUserIntoDb(user)
+    const result: IUser | null = await UserService.createUserIntoDb(user)
     return sendResponse(res, 201, 'User created successfully.', result)
   } catch (error) {
     next(error)
@@ -14,6 +14,6 @@ const createUser = async (req: Request, res: Response, next: NextFunction) => {
   }
 }
 
-export default {
+export const UserController = {
   createUser,
 }
