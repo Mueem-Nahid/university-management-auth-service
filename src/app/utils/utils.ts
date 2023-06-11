@@ -1,4 +1,4 @@
-import { Response } from 'express'
+import { Response } from 'express';
 
 export const sendResponse = (
   res: Response,
@@ -6,5 +6,5 @@ export const sendResponse = (
   message: string,
   data = null
 ) => {
-  return res?.status(status).json({ status, message, data })
-}
+  return res?.status(status).json({ status, message, data });
+};
