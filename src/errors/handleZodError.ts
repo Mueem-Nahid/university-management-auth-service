@@ -5,7 +5,7 @@ import { IGenericErrorMessage } from '../interfaces/error';
 const handleZodError = (error: ZodError): IGenericErrorResponse => {
   const errors: IGenericErrorMessage[] = error.issues.map((issue: ZodIssue) => {
     return {
-      path: issue?.path[-1],
+      path: issue?.path.slice(-1)[0],
       message: issue?.message,
     };
   });
