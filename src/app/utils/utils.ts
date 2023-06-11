@@ -1,10 +1,10 @@
-import { Response } from 'express'
+import { Response } from 'express';
 
 export const sendResponse = (
   res: Response,
   status: number,
   message: string,
-  data: any = null
+  data = null
 ) => {
-  return res?.status(status).json({ status, message, data })
-}
+  return res?.status(status).json({ status, message, data });
+};
