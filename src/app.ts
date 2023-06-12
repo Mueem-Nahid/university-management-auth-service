@@ -1,8 +1,7 @@
 import express, { Application } from 'express';
 import cors from 'cors';
 import globalErrorHandler from './app/middlewares/globalErrorHandler';
-import { UserRoutes } from './app/modules/user/user.route';
-import { AcademicSemesterRoutes } from './app/modules/academicSemester/academicSemester.route';
+import routes from './app/routes';
 
 const app: Application = express();
 
@@ -13,13 +12,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // application routes
-app.use('/api/v1/user', UserRoutes);
-app.use('/api/v1/academic-semester', AcademicSemesterRoutes);
-
-// testing
-app.use('/', async () => {
-  Promise.reject(new Error('\nUnhandled promise rejection\n'));
-});
+app.use('/api/v1', routes);
 
 // global error handler
 app.use(globalErrorHandler);
