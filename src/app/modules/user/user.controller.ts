@@ -9,13 +9,13 @@ const createUser = catchAsync(
   async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     const user = req.body;
     const result: IUser | null = await UserService.createUserIntoDb(user);
-    next();
     sendResponse(res, {
       statusCode: httpStatus.CREATED,
       success: true,
       message: 'User created successfully !',
       data: result,
     });
+    next();
   }
 );
 
