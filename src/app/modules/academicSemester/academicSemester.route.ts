@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { Router } from 'express';
 import { AcademicSemesterValidation } from './academicSemester.validation';
 import validateRequest from '../../middlewares/validateRequest';
 import { AcademicSemesterController } from './academicSemester.controller';
@@ -11,4 +11,16 @@ router.post(
   AcademicSemesterController.createAcademicSemester
 );
 
-export const AcademicSemesterRoutes = router;
+router.get('/:id', AcademicSemesterController.getSingleSemester);
+
+router.patch(
+  '/:id',
+  validateRequest(AcademicSemesterValidation.updateAcademicSemesterZodSchema),
+  AcademicSemesterController.updateSemester
+);
+
+router.delete('/:id', AcademicSemesterController.deleteSemester);
+
+router.get('/', AcademicSemesterController.getAllSemesters);
+
+export const AcademicSemesterRoutes: Router = router;
