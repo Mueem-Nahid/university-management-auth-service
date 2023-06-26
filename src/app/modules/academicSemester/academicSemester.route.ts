@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { Router } from 'express';
 import { AcademicSemesterValidation } from './academicSemester.validation';
 import validateRequest from '../../middlewares/validateRequest';
 import { AcademicSemesterController } from './academicSemester.controller';
@@ -23,4 +23,4 @@ router.delete('/:id', AcademicSemesterController.deleteSemester);
 
 router.get('/', AcademicSemesterController.getAllSemesters);
 
-export const AcademicSemesterRoutes = router;
+export const AcademicSemesterRoutes: Router = router;
