@@ -9,7 +9,6 @@ import {
   months,
 } from './academicSemester.constant';
 import ApiError from '../../../errors/ApiError';
-
 import httpStatus from 'http-status';
 
 const academicSemesterSchema = new Schema<IAcademicSemester>(

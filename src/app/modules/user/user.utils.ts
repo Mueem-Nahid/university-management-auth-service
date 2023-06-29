@@ -15,8 +15,8 @@ export const generateStudentId = async (
 };
 
 export const generateAdminOrFacultyId = async (
-  userType: string,
-  role: string
+  userType: 'F' | 'A',
+  role: 'faculty' | 'admin'
 ): Promise<string> => {
   let incrementedId: string = await generateUserId(role);
   incrementedId = `${userType}-${incrementedId}`;
