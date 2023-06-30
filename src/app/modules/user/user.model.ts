@@ -1,5 +1,6 @@
-import { Schema, model } from 'mongoose';
+import { model, Schema } from 'mongoose';
 import { IUser, UserModel } from './user.interface';
+import { hashPassword } from '../../../helpers/hashPassword';
 
 const userSchema = new Schema<IUser>(
   {
@@ -36,5 +37,12 @@ const userSchema = new Schema<IUser>(
     },
   }
 );
+
+// hash password using pre hook middleware (fat model thin controller)
+// User.create() / user.save()
+userSchema.pre('save', async function (next) {
+  this.password = await hashPassword.encryptPassword(this.password);
+  next();
+});
 
 export const User = model<IUser, UserModel>('User', userSchema);
