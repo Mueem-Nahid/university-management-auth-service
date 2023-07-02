@@ -14,18 +14,16 @@ export type IUser = {
 };
 
 // static methods
+/* eslint-disable no-unused-vars */
 export type IUserMethods = {
   isUserExist(
-    // eslint-disable-next-line no-unused-vars
     id: string
   ): Promise<Pick<
     IUser,
     'id' | 'password' | 'role' | 'needToChangePassword'
   > | null>;
   isPasswordMatched(
-    // eslint-disable-next-line no-unused-vars
     enteredPassword: string,
-    // eslint-disable-next-line no-unused-vars
     savedPassword: string
   ): Promise<boolean>;
 };
